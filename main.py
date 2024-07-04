@@ -1,6 +1,6 @@
 def modell():
     import tensorflow as tf
-    from tensorflow.keras.applications import EfficientNetB3
+    from tensorflow.keras.applications import EfficientNetB1
     from tensorflow.keras.models import Model
     from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
     from tensorflow.keras.optimizers import Adam
@@ -17,12 +17,12 @@ def modell():
         except RuntimeError as e:
             print(e)
 
-    BatchSize = 32
+    BatchSize = 4
     LearningRate =0.01
-    EPOCHS = 1
+    EPOCHS = 2
     n_classes = 101
 
-    base_model = EfficientNetB3(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+    base_model = EfficientNetB1(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
@@ -35,14 +35,14 @@ def modell():
 
     train_datagen = ImageDataGenerator(preprocessing_function=tf.keras.applications.efficientnet.preprocess_input, validation_split=0.3)
     train_generator = train_datagen.flow_from_directory(
-        'ai-health-project\food-101\food-101\images',
+        r'food-101/food-101/images',
         target_size=(224, 224),
         batch_size=BatchSize,
         class_mode='categorical',
         subset='training')
 
     validation_generator = train_datagen.flow_from_directory(
-        'ai-health-project\food-101\food-101\images',
+        r'food-101/food-101/images',
         target_size=(224, 224),
         batch_size=BatchSize,
         class_mode='categorical',
