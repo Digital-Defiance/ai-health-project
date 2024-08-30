@@ -1,3 +1,13 @@
+from pydantic import BaseModel,Field
+from typing import Literal
+
+class HyperParameters(BaseModel):
+    model_size: Literal["EfficientNetB0", "EfficientNetB1","EfficientNetB2","EfficientNetB3","EfficientNetB4","EfficientNetB5","EfficientNetB6","EfficientNetB7"]
+    LearningRate:float=Field(gt=0,lt=1)
+    BatchSize:int
+    Epochs:int
+
+
 def model():
     import tensorflow as tf
     from tensorflow.keras.applications import EfficientNetB1
@@ -58,9 +68,4 @@ def model():
     model.save("food-image-recognition.h5")
 
 if __name__ == '__main__':
-    # if "/meow.h5":
-
-    # #  print("yes")
-    # return
-    # else:
      model()
