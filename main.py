@@ -1,4 +1,4 @@
-def modell():
+def model():
     import tensorflow as tf
     from tensorflow.keras.applications import EfficientNetB1
     from tensorflow.keras.models import Model
@@ -63,4 +63,4 @@ if __name__ == '__main__':
     # #  print("yes")
     # return
     # else:
-     modell()
+     model()
