@@ -8,8 +8,7 @@ class HyperParameters(BaseModel):
     Epochs:int
 
 
-
-def modell():
+def model():
     import tensorflow as tf
     from tensorflow.keras.applications import EfficientNetB1
     from tensorflow.keras.models import Model
@@ -68,10 +67,5 @@ def modell():
 
     model.save("food-image-recognition.h5")
 
-# if __name__ == '__main__':
-#     # if "/meow.h5":
-
-#     # #  print("yes")
-#     # return
-#     # else:
-#     #  modell()
+if __name__ == '__main__':
+     model()
