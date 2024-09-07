@@ -12,7 +12,7 @@
 	    "ghcr.io/jungaretti/features/make:1": {},
 	
 	  },
-	"postCreateCommand": "pip install fastapi==0.70.0 uvicorn==0.15.0 optuna==3.6.1 pydantic==1.10.2",
+	"postCreateCommand": "pip install tensorflow fastapi==0.70.0 uvicorn==0.15.0 optuna==3.6.1 pydantic==1.10.2",
 	"containerEnv": {
 	
 		// this is for the segmentation_models package
