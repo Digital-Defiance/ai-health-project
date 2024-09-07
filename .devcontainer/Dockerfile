@@ -1,9 +1,8 @@
-# Use the TensorFlow base image
-FROM tensorflow/tensorflow:latest
+FROM ubuntu:22.04
 
-# Set working directory
-WORKDIR /app
+LABEL com.nvidia.volumes.needed="nvidia_driver"
 
-# Install FastAPI, Uvicorn, and Optuna
-RUN pip install fastapi==0.70.0 uvicorn==0.15.0 optuna==3.6.1
-RUN pip install pydantic==1.10.2
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:$PATH
