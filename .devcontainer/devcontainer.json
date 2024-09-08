@@ -1,21 +1,18 @@
 {
-	  "build": {
-	    "dockerfile": "Dockerfile"
-	  },
-	  "features": {
-	    "ghcr.io/devcontainers/features/nvidia-cuda:1": { "installToolkit": true },
-	    "ghcr.io/duduribeiro/devcontainer-features/neovim:1": { "version": "nightly" },
-	    "ghcr.io/itsmechlark/features/1password:1": {},
-	    "ghcr.io/devcontainers/features/github-cli:1": {},
-	    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
-	    "ghcr.io/devcontainers/features/node:1": { "version": "20.16"},
-	    "ghcr.io/jungaretti/features/make:1": {},
-	
-	  },
-	"postCreateCommand": "pip install tensorflow fastapi==0.70.0 uvicorn==0.15.0 optuna==3.6.1 pydantic==1.10.2",
-	"containerEnv": {
-	
-		// this is for the segmentation_models package
-		"SM_FRAMEWORK": "tf.keras"
-	}
+  "image": "ghcr.io/digital-defiance/ai-health-project-devcontainer:latest",
+  "mounts": [
+      { 
+          "source": "/etc/localtime", 
+          "target": "/etc/localtime",
+          "type": "bind" 
+      },
+      { 
+          "source": "${localWorkspaceFolder}/.devcontainer/resolv.conf", 
+          "target": "/etc/resolv.conf",
+          "type": "bind" 
+      }
+  ],
+  "hostRequirements": {
+    "gpu": "optional" 
+  }
 }
